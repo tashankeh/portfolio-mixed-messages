@@ -3,11 +3,12 @@
 // Message object
 const message = {
     _msgYear: [],
-    wish: ["will certainly be"," if well planned, will be", "if nothing is done now will not be",
-          "will be", "seems to be","will be Akeva's","will be Duma's","will be Edima's","will be Mama's","will be Dad's"],
+    wish: ["will certainly be your"," if well planned, will be your", "if nothing is done now will not be your",
+          "will be your", "seems to be your","will be your siter's","will be your son's","will be your daughter's","will be your Mama's","will be Dad's"],
     qualification:  ["health & wellness","financial freedom","networking & relationships",
-          "spiritual awareness & growth","relaxation & enjoyment","investment","harvesting","joy & laughter",
-          "spiritual regeneration","service"],
+          "spiritual awareness & growth","relaxation & enjoyment","massive financial investment",
+          "harvesting the fruits of consistency","joy & laughter",
+          "spiritual regeneration"," sacrifice & service to humanity"],
     set msgYear(startYear){
         let arrYears = [];
         for (i= 0; i<10; i++) {
@@ -21,14 +22,18 @@ const message = {
     }
 };
 
+//generate a random index
+const randomNumGen = num =>{
+    let index = Math.floor(Math.random()*num);
+    return index;
+}
 //msg generation function
 
 const mixedMessages = (yr) => {
     message.msgYear = yr;
-    let x = Math.floor(Math.random()*10);// x will be used to determine array index to use for message selections
-    let y = Math.floor(Math.random()*10);// y will be used to determine array index to use for message selections
-    let z = Math.floor(Math.random()*10);// z will be used to determine array index to use for message selections
-    console.log(`${x}, ${y} ${z}`);
-    console.log(`${message.msgYear[x]} ${message.wish[y]} a year of ${message.qualification[z]}`);
+    let x = randomNumGen(message.msgYear.length);
+    let y = randomNumGen(message.wish.length);
+    let z = randomNumGen(message.qualification.length);
+    console.log(`${message.msgYear[x]} ${message.wish[y]} year of ${message.qualification[z]}`);
 }
-mixedMessages(2031);
+mixedMessages(2021);
