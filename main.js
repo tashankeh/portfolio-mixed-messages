@@ -1,38 +1,34 @@
 // code for the mixed messages portfolio project
 
-// arrays to contain various message pieces
-const arrYears = [];
-const arrQualifications = ["health & wellness","financial freedom","network & relationships",
-"spiritual awareness & growth","relaxation & enjoyment","investment","harvesting","joy & laughter",
-"spiritual regeneration","service"];
-const arrWishes =["will certainly be"," if well planned, will be", "if nothing is done now will not be",
-"will be", "seems to be","will be Akeva's","will be Duma's","will be Edima's","will be Mama's"];
-
+// Message object
 const message = {
-    myYear: arrYears,
-    wish: arrWishes,
-    qualification: arrQualifications
-};
-
-//function will generate 10 ccalendar years starting from the initial year passed as argument and store in the years array.
-
-const msgYearsGen = year => {
-    for (i= 0; i<10; i++) {
-        arrYears.push(year);
-        year ++;
+    _msgYear: [],
+    wish: ["will certainly be"," if well planned, will be", "if nothing is done now will not be",
+          "will be", "seems to be","will be Akeva's","will be Duma's","will be Edima's","will be Mama's","will be Dad's"],
+    qualification:  ["health & wellness","financial freedom","networking & relationships",
+          "spiritual awareness & growth","relaxation & enjoyment","investment","harvesting","joy & laughter",
+          "spiritual regeneration","service"],
+    set msgYear(startYear){
+        let arrYears = [];
+        for (i= 0; i<10; i++) {
+            arrYears.push(startYear);
+            startYear ++;
+        }
+        this._msgYear = arrYears;
+    },
+    get msgYear() {
+        return this._msgYear;
     }
-    return arrYears;
-}
+};
 
 //msg generation function
 
-const mixedMessages = yrs => {
-    msgYearsGen(yrs);
+const mixedMessages = (yr) => {
+    message.msgYear = yr;
     let x = Math.floor(Math.random()*10);// x will be used to determine array index to use for message selections
     let y = Math.floor(Math.random()*10);// y will be used to determine array index to use for message selections
     let z = Math.floor(Math.random()*10);// z will be used to determine array index to use for message selections
-    //console.log(`${x}, ${y} ${z}`);
-    console.log(`${message.myYear[x]} ${message.wish[y]} a year of ${message.qualification[z]}`);
-
+    console.log(`${x}, ${y} ${z}`);
+    console.log(`${message.msgYear[x]} ${message.wish[y]} a year of ${message.qualification[z]}`);
 }
-mixedMessages(2021);
+mixedMessages(2031);
